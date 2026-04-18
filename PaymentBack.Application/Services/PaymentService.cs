@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using PaymentBack.Application.DTO.CreatePaymentDto;
 using PaymentBack.Application.DTO.GetPaymentsDto;
-using PaymentBack.Application.DTO.GetPayStatsByDay;
+using PaymentBack.Application.DTO.GetPayStatsByDayDto;
+using PaymentBack.Application.DTO.GetStatsDto;
 using PaymentBack.Domain.Entities;
 using PaymentBack.Domain.Models;
 using PaymentBack.Infrastructure.Repositories;
@@ -32,9 +33,9 @@ namespace PaymentBack.Application.Services
             return payments.ContinueWith(t => new GetPaymentsDtoResponse { Payments = t.Result }, token);
         }
 
-        public Task<PaymentCommonStatsModel> GetStatsAsync(CancellationToken token)
+        public Task<GetStatsDtoResponse> GetStatsAsync(CancellationToken token)
         {
-            return _paymentRepository.GetStatsAsync(token).ContinueWith(t => _mapper.Map<PaymentCommonStatsModel>(t.Result), token);
+            return _paymentRepository.GetStatsAsync(token).ContinueWith(t => new GetStatsDtoResponse { PaymentCommonStats = _mapper.Map<PaymentCommonStatsModel>(t.Result) }, token);
         }
 
         public Task<GetPayStatsByDayResponse> GetPayStatsByDay(GetPayStatsByDayParams @params, CancellationToken token)

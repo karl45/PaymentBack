@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PaymentBack.Application.DTO.GetPayStatsByDay
+namespace PaymentBack.Application.DTO.GetPayStatsByDayDto
 {
     public class GetPayStatsByDayParams
     {

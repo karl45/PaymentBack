@@ -1,6 +1,7 @@
 ﻿using PaymentBack.Application.DTO.CreatePaymentDto;
 using PaymentBack.Application.DTO.GetPaymentsDto;
-using PaymentBack.Application.DTO.GetPayStatsByDay;
+using PaymentBack.Application.DTO.GetPayStatsByDayDto;
+using PaymentBack.Application.DTO.GetStatsDto;
 using PaymentBack.Domain.Models;
 
 namespace PaymentBack.Application.Services
@@ -11,7 +12,7 @@ namespace PaymentBack.Application.Services
 
        Task<GetPaymentsDtoResponse> GetAllPayments(GetPaymentsDtoParams @params, CancellationToken token);
 
-       Task<PaymentCommonStatsModel> GetStatsAsync(CancellationToken token);
+       Task<GetStatsDtoResponse> GetStatsAsync(CancellationToken token);
 
        Task<GetPayStatsByDayResponse> GetPayStatsByDay(GetPayStatsByDayParams @params, CancellationToken token);
 
