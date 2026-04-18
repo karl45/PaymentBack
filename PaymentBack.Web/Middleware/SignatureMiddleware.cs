@@ -4,7 +4,7 @@ using PaymentBack.Domain.Enums;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace PaymentBack.Middleware
+namespace PaymentBack.Web.Middleware
 {
     public class SignatureMiddleware
     {

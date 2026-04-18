@@ -1,4 +1,4 @@
-﻿using PaymentBack.Middleware;
+﻿using PaymentBack.Web.Middleware;
 
 namespace PaymentBack.Web.Extensions
 {
