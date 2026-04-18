@@ -1,7 +1,4 @@
-﻿using PaymentBack.Application.DTO.CreatePaymentDto;
-using PaymentBack.Application.Services;
-using PaymentBack.Domain.Enums;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 
 namespace PaymentBack.Web.Middleware
@@ -17,16 +14,13 @@ namespace PaymentBack.Web.Middleware
             _secretKey = configuration["FrontEnd:SecretKey"] ?? throw new ArgumentNullException("SignatureSecretKey is not configured.");
         }
 
-        public async Task InvokeAsync(HttpContext context, IPaymentService _paymentService)
+        public async Task InvokeAsync(HttpContext context)
         {
             context.Request.EnableBuffering();
 
             if (!context.Request.Headers.TryGetValue("X-Signature", out var extractedSignature))
             {
                 context.Response.StatusCode = 401;
-                var paymentModel = await context.Request.ReadFromJsonAsync<CreatePaymentDtoRequest>();
-                paymentModel.Payment.Status = Status.Rejected;
-                await _paymentService.CreatePaymentAsync(paymentModel, context.RequestAborted);
                 return;
 
             }
@@ -39,9 +33,6 @@ namespace PaymentBack.Web.Middleware
             if (computedSignature != extractedSignature)
             {
                 context.Response.StatusCode = 403;
-                var paymentModel = await context.Request.ReadFromJsonAsync<CreatePaymentDtoRequest>();
-                paymentModel.Payment.Status = Status.Rejected;
-                await _paymentService.CreatePaymentAsync(paymentModel, context.RequestAborted);
                 return;
             }
             await _next(context);
