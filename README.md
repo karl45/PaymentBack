@@ -1,6 +1,3 @@
-```
-dotnet --version
-```
 # .NET CLI:
 ```
 cd /path_where_<.csproj>
