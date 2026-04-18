@@ -1,4 +1,4 @@
-# NET Version 10.0
+<img width="1054" height="41" alt="image" src="https://github.com/user-attachments/assets/e59d6ef2-66e1-4a8e-99fc-a5701c09ec76" /># NET Version 10.0
 (Check it by)
 ```
 dotnet --version
@@ -13,20 +13,21 @@ or
 dotnet run --project /path_where_<.csproj>
 ```
 # Visual Studio:
-
-# Migration 
-All migrations applied automotically
-Don't care about this error, program create database by itself after. 
-<img width="1026" height="46" alt="image" src="https://github.com/user-attachments/assets/ecb97e96-7209-4b93-8df3-ea67b11ab8ea" />
-
-# Change connection string by yourself in appsetings.json file
-# Signature key in appsettings.json file (FrontEnd:SecretKey)
-
-
 # При запсуке проекта убедитесь что запускаемый проект должен быть Payment.Web!!!!
 <img width="395" height="345" alt="image" src="https://github.com/user-attachments/assets/8684e09a-ea57-4f93-b6ce-5d26c9cb21a1" />
 
 # Если не он запускамый проект, то через правую кнопкой мыши кликаете на Payment.Web и выберите "Назначить автозапускаемым проектом"
+
+
+# Migration 
+Все миграции применятся автоматически. Если возникнет следующая ошибка:
+<img width="1054" height="41" alt="image" src="https://github.com/user-attachments/assets/e850e923-3236-491f-ab51-e62b38d8957f" />
+не переживайте, просто в начале когда база не создана, он при подключении падает, но потом создаёт базу и применяет миграции. Ничего дополнительно делать не нужно
+# Change connection string by yourself in appsetings.json file
+# Signature key in appsettings.json file (FrontEnd:SecretKey)
+
+
+
 
 
 
