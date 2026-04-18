@@ -2,7 +2,7 @@
 using PaymentBack.Domain.Enums;
 using PaymentBack.Infrastructure.DbClient;
 
-namespace PaymentBack.Extensions
+namespace PaymentBack.Web.Extensions
 {
     public static class DbConfigurationExtension
     {

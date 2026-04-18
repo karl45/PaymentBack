@@ -1,4 +1,4 @@
-﻿namespace PaymentBack.Extensions
+﻿namespace PaymentBack.Web.Extensions
 {
     public static class CorsConfigurationExtension
     {

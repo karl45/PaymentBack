@@ -1,7 +1,7 @@
 ﻿using PaymentBack.Application.Services;
 using PaymentBack.Infrastructure.Repositories;
 using PaymentBack.Mapper;
-namespace PaymentBack.Extensions
+namespace PaymentBack.Web.Extensions
 {
     public static class ServicesConfigurationExtension
     {

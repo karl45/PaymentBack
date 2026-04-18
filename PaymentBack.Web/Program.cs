@@ -1,7 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using PaymentBack.Extensions;
-using PaymentBack.Middleware;
-using System.Text.Json.Serialization;
+using PaymentBack.Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,18 +11,16 @@ builder.ConfigureServices();
 builder.ConfigureCors();
 
 var app = builder.Build();
-app.ConfigureDbMakeMigration();
 
+app.ConfigureDbMakeMigration();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
 
 app.UseCors("AllowClient");
-app.UseWhen(context => context.Request.Method == "POST", appBuilder =>
-{
-    appBuilder.UseMiddleware<SignatureMiddleware>();
-});
+app.UseSignatureForPostRequests();
+
 app.MapControllers();
 
 app.Run();
