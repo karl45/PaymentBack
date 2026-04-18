@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="PaymentBack.Application/PaymentBack.Application.csproj" Id="55da289c-ace2-4c1b-9cf4-fe1f742ebae6" />
+  <Project Path="PaymentBack.Domain/PaymentBack.Domain.csproj" Id="223f4af7-b298-4006-8bbc-2857c7ff62ae" />
+  <Project Path="PaymentBack.Infrastructure/PaymentBack.Infrastructure.csproj" Id="e0686863-f098-4e33-b96e-1307bc5a0880" />
+  <Project Path="PaymentBack.Web/PaymentBack.Web.csproj" />
+</Solution>
