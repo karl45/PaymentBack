@@ -15,7 +15,7 @@ dotnet run --project /path_where_<.csproj>
 
 
 # Migration 
-Все миграции применятся автоматически. Если возникнет следующая ошибка:
+Все миграции применяются автоматически. Если возникнет следующая ошибка:
 <img width="1054" height="41" alt="image" src="https://github.com/user-attachments/assets/e850e923-3236-491f-ab51-e62b38d8957f" />
 не переживайте, просто в начале когда база не создана, он при подключении падает, но потом создаёт базу и применяет миграции. Ничего дополнительно делать не нужно
 # Change connection string by yourself in appsetings.json file
