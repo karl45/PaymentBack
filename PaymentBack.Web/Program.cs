@@ -9,6 +9,7 @@ builder.Services.AddOpenApi();
 builder.ConfigureDb();
 builder.ConfigureServices();
 builder.ConfigureCors();
+builder.ConfigureLogger();
 
 var app = builder.Build();
 
