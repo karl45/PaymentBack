@@ -1,5 +1,3 @@
-<img width="1054" height="41" alt="image" src="https://github.com/user-attachments/assets/e59d6ef2-66e1-4a8e-99fc-a5701c09ec76" /># NET Version 10.0
-(Check it by)
 ```
 dotnet --version
 ```
