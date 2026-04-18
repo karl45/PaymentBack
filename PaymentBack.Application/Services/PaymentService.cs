@@ -20,27 +20,29 @@ namespace PaymentBack.Application.Services
             _mapper = mapper;
         }
 
-        public Task<CreatePaymentDtoResponse> CreatePaymentAsync(CreatePaymentDtoRequest request, CancellationToken token)
+        public async Task<CreatePaymentDtoResponse> CreatePaymentAsync(CreatePaymentDtoRequest request, CancellationToken token)
         {
             var paymentEntity = _mapper.Map<PaymentEntity>(request.Payment);
-            var resultPayment = _paymentRepository.CreatePaymentAsync(paymentEntity, token).ContinueWith(t => _mapper.Map<PaymentModel>(t.Result), token);
-            return resultPayment.ContinueWith(t => new CreatePaymentDtoResponse { Payment = _mapper.Map<PaymentModel>(t.Result) }, token);
+            var resultPayment = await _paymentRepository.CreatePaymentAsync(paymentEntity, token);
+            return new CreatePaymentDtoResponse { Payment = _mapper.Map<PaymentModel>(resultPayment) };
         }
 
-        public Task<GetPaymentsDtoResponse> GetAllPayments(GetPaymentsDtoParams @params, CancellationToken token)
+        public async Task<GetPaymentsDtoResponse> GetAllPayments(GetPaymentsDtoParams @params, CancellationToken token)
         {
-            var payments = _paymentRepository.GetAllPayments(@params.PageSize, token, @params.PrevId, @params.LastId).ContinueWith(t => _mapper.Map<List<PaymentModel>>(t.Result), token);
-            return payments.ContinueWith(t => new GetPaymentsDtoResponse { Payments = t.Result }, token);
+            var payments = await _paymentRepository.GetAllPayments(@params.PageSize, token, @params.PrevId, @params.LastId);
+            return new GetPaymentsDtoResponse { Payments = _mapper.Map<List<PaymentModel>>(payments) };
         }
 
-        public Task<GetStatsDtoResponse> GetStatsAsync(CancellationToken token)
+        public async Task<GetStatsDtoResponse> GetStatsAsync(CancellationToken token)
         {
-            return _paymentRepository.GetStatsAsync(token).ContinueWith(t => new GetStatsDtoResponse { PaymentCommonStats = _mapper.Map<PaymentCommonStatsModel>(t.Result) }, token);
+            var stats = await _paymentRepository.GetStatsAsync(token);
+            return new GetStatsDtoResponse { PaymentCommonStats = _mapper.Map<PaymentCommonStatsModel>(stats) };
         }
 
-        public Task<GetPayStatsByDayResponse> GetPayStatsByDay(GetPayStatsByDayParams @params, CancellationToken token)
+        public async Task<GetPayStatsByDayResponse> GetPayStatsByDay(GetPayStatsByDayParams @params, CancellationToken token)
         {
-            return _paymentRepository.GetPayStatsByDay(@params.PageSize, token, @params.PrevDate, @params.LastDate).ContinueWith(t => new GetPayStatsByDayResponse { DayStats = _mapper.Map<List<PaymentGroupedByDayStatsModel>>(t.Result) }, token);
+            var dayStats = await _paymentRepository.GetPayStatsByDay(@params.PageSize, token, @params.PrevDate, @params.LastDate);
+            return new GetPayStatsByDayResponse { DayStats = _mapper.Map<List<PaymentGroupedByDayStatsModel>>(dayStats) };
         }
 
     }
