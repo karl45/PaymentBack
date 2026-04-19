@@ -3,7 +3,7 @@ using PaymentBack.Infrastructure.DbClient;
 
 namespace PaymentBack.Web.Extensions
 {
-    public static class DbMakeMigrationConfigurationcs
+    public static class DbMakeMigrationConfiguration
     {
         public static void ConfigureDbMakeMigration(this WebApplication app)
         {
