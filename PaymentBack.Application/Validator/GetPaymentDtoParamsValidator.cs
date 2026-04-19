@@ -12,10 +12,12 @@ namespace PaymentBack.Application.Validator
                 .LessThanOrEqualTo(100).WithMessage("Размер страницы не должен превышать 100");
 
             RuleFor(x => x.PrevId)
-                .GreaterThan(0).WithMessage("Предыдущий идентификатор должен быть больше нуля");
+                .GreaterThanOrEqualTo(0)
+                .WithMessage("Предыдущий идентификатор должен быть положительным или ноль");
 
             RuleFor(x => x.LastId)
-                .GreaterThan(0).WithMessage("Последующий идентификатор должен быть больше нуля");
+                .GreaterThanOrEqualTo(0)
+                .WithMessage("Последующий идентификатор должен быть положительным или ноль");
         }
     }
 }
